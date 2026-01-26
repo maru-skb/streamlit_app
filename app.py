@@ -34,10 +34,11 @@ if option == 'アプリの概要':
     st.write('本アプリは、e-statの「国勢調査」のデータを使用して、都道府県別の人口推移を可視化します。')
     st.write('サイドバーから都道府県や人口分類を選択して、グラフや表を確認してください。')
 
-    with st.title('データの出典と注意点'):
-        st.write('・出典：政府統計の総合窓口(e-stat)「国勢調査」')
-        st.write('・大正から平成までの人口推移を確認できます')
-        st.write('・単位：人')                
+    with st.expander('データの詳細と注意点'):
+        st.write('・データ元：e-stat 男女別人口-全国, 都道府県（大正9年～平成27年）「国勢調査」')
+        st.write('・期間：大正9年から平成27年までの人口推移を確認できます')
+        st.write('・単位：人')
+        st.write('・注意点：本来データにあった、全国および人口集中地区・人口集中地区以外、というデータは除外している')                
 
 elif option == 'グラフ':
     st.title(f'{population_type}の推移と比較')
@@ -51,11 +52,17 @@ elif option == 'グラフ':
     )
     st.plotly_chart(fig1)
 
+    with st.expander('グラフについて'):
+        st.write('このグラフは選択した都道府県の人口の変化を折れ線グラフで表わしている。')
+        st.write('都道府県を複数選択することで、各都道府県の人口を比較することができる。')
+        st.write('折れ線グラフが右肩上がりなら増加、右肩下がりなら減少していることが分かる。')
+        st.write('各都道府県を比較することで、地域ごとの増減の違いが分かる。')
+
     # 最新年の合計を表示
     latest_year = df['西暦（年）'].max()
     total_value = df[df['西暦（年）'] == latest_year][population_type].sum()
     st.metric(
-        label=f'{latest_year}年の選択合計',
+        label=f'選択した都道府県（{latest_year}）年の合計人口',
         value=f'{int(total_value):,}人'
         )
 
@@ -70,6 +77,11 @@ elif option == 'グラフ':
         color = '都道府県名'
     )
     st.plotly_chart(fig2)
+
+    with st.expander('グラフについて'):
+        st.write('このグラフは選択した都道府県の最新（2015年）の人口を棒グラフで表わしている。')
+        st.write('都道府県を複数選択することで、各都道府県の人口を比較することができる。')
+        st.write('棒グラフが高いほど、その地域の人口が多いことが分かる。')
 
 elif option == '表':
     st.title('データ一覧')
