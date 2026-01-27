@@ -35,6 +35,11 @@ https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_
 
 部品名：
 
+参考にしたアプリ
+アプリ：Seattle Weather
+URL：https://demo-seattle-weather.streamlit.app/?ref=streamlit-io-gallery-favorites
+参考点：st.metricを使用して数値を強調している点や、複数のグラフを使用して様々な視点から比較できるようにしている点。
+どう反映したか：サイドバーを使用して都道府県や人口の分類を選択できるようにした。そして、折れ線グラフと棒グラフを用いて比較をできるようにした。また、選択した都道府県の最新年の人口合計をst.metricを使用して数値を強調した。
 
 生成AIを利用したか：Yes
 使用した場面・参考にした程度
