@@ -60,6 +60,7 @@ elif option == 'グラフ':
 
     # 最新年の合計を表示
     latest_year = df['西暦（年）'].max()
+    # 最新年から選んだ都道府県の人口合計を計算する
     total_value = df[df['西暦（年）'] == latest_year][population_type].sum()
     st.metric(
         label=f'選択した都道府県（{latest_year}）年の合計人口',
@@ -83,6 +84,7 @@ elif option == 'グラフ':
         st.write('都道府県を複数選択することで、各都道府県の人口を比較することができる。')
         st.write('棒グラフが高いほど、その地域の人口が多いことが分かる。')
 
+    # 選択したデータ一覧を表示
 elif option == '表':
     st.title('データ一覧')
     st.write(f'{selected_pre}のデータです')

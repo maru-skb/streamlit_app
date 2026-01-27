@@ -1,14 +1,14 @@
 統計表名
 男女別人口－全国，都道府県（大正9年～平成27年）
 
-URL
-https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_infid=000031524010
-
 データセット名または表番号
 男女別人口－全国，都道府県（大正9年～平成27年）
 
 データ取得日
 2026年1月26日
+
+参照URL
+https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_infid=000031524010
 
 各列の意味
 都道府県コード：都道府県を識別するコード
@@ -18,9 +18,23 @@ https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_
 男　　　　　　：男性の人口
 女　　　　　　：女性の人口
 
-単位（人、円、％など）と注意点
+単位と注意点
 単位　：人
 注意点：データの中にあった全国・人口集中地区・人口集中地区以外、というデータは除外している
+
+未使用UI部品
+部品名：expander（折りたたみ表示）
+目的　：普段は見ない部分を折りたたみ表示にすることで表示画面が見やすくなると考え使用した。
+場所　：アプリの概要の注意点やグラフの説明の下部に配置した。
+参照URL：https://docs.streamlit.io/develop/api-reference/layout/st.expander
+
+部品名：metric（数値カード）
+目的　：グラフとともに最新年の人口合計を強調することによって実際の数字を直感的に把握できると考え使用した。
+場所　：棒グラフの上部に配置した
+参照URL：https://docs.streamlit.io/develop/api-reference/data/st.metric
+
+部品名：
+
 
 生成AIを利用したか：Yes
 使用した場面・参考にした程度
