@@ -30,10 +30,13 @@ https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_
 
 部品名：metric（数値カード）
 目的　：グラフとともに最新年の人口合計を強調することによって実際の数字を直感的に把握できると考え使用した。
-場所　：棒グラフの上部に配置した
+場所　：棒グラフの上部に配置した。
 参照URL：https://docs.streamlit.io/develop/api-reference/data/st.metric
 
-部品名：
+部品名：download_button（ダウンロードボタン）
+目的　：アプリの使用者が、自身でデータを活用したいときに、使用できるようにするため。
+場所　：表（データ一覧）の下部にst.columnsを使用し、2つを並べて配置した。
+参照URL：https://docs.streamlit.io/develop/api-reference/widgets/st.download_button
 
 参考にしたアプリ
 アプリ：Seattle Weather
