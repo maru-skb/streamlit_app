@@ -6,14 +6,14 @@ import plotly.express as px
 
 st.title('人口推移')
 
-df = pd.read_csv('c01.csv')
+df_all = pd.read_csv('c01.csv')
 
 with st.sidebar:
     st.header('メニュー')
 
     # 都道府県を選択（複数可）
     selected_pre = st.multiselect('都道府県を選択してください（複数選択可）',
-                            df['都道府県名'].unique(),
+                            df_all['都道府県名'].unique(),
                             default=['北海道'])
     
     # 分類を選択
@@ -26,7 +26,7 @@ with st.sidebar:
                       ['アプリの概要', '表', 'グラフ'])
     
 # 年順に並べ替える
-df = df[df['都道府県名'].isin(selected_pre)]
+df = df_all[df_all['都道府県名'].isin(selected_pre)]
 df = df.sort_values('西暦（年）')
 
 if option == 'アプリの概要':
@@ -56,7 +56,7 @@ elif option == 'グラフ':
         color='都道府県名',
     )
     st.plotly_chart(fig1)
-
+    
     with st.expander('グラフについて'):
         st.write('このグラフは選択した都道府県の人口の変化を折れ線グラフで表わしている。')
         st.write('都道府県を複数選択することで、各都道府県の人口を比較することができる。')
@@ -93,4 +93,22 @@ elif option == 'グラフ':
 elif option == '表':
     st.title('データ一覧')
     st.write(f'{selected_pre}のデータです')
+
+    csv_select = df[['都道府県名', '西暦（年）', population_type]].to_csv(index=False).encode('utf-8-sig')
+    csv_all = df_all.to_csv(index=False).encode('utf-8-sig')
+
     st.dataframe(df[['都道府県名', '西暦（年）', population_type]])
+
+    col = st.columns(2)
+    col[0].download_button(
+            label='選択した都道府県の人口データをダウンロード',
+            data=csv_select,
+            file_name='select_data.csv',
+            mime='text/csv'
+            )
+    col[1].download_button(
+            label='全都道府県の人口データをダウンロード',
+            data=csv_all,
+            file_name='all_data.csv',
+            mime='text/csv'
+            )
