@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.title('人口推移')
+st.title('人口推移アプリ')
 
 df_all = pd.read_csv('c01.csv')
 
