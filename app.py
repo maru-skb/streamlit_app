@@ -43,6 +43,30 @@ if option == 'アプリの概要':
         st.write('・単位：人')
         st.write('・注意点：本来データにあった、全国および人口集中地区・人口集中地区以外、というデータは除外している')                
 
+    # 選択したデータ一覧を表示
+elif option == '表':
+    st.title('データ一覧')
+    st.write(f'{selected_pre}のデータです')
+
+    csv_select = df[['都道府県名', '西暦（年）', population_type]].to_csv(index=False).encode('utf-8-sig')
+    csv_all = df_all.to_csv(index=False).encode('utf-8-sig')
+
+    st.dataframe(df[['都道府県名', '西暦（年）', population_type]])
+
+    col = st.columns(2)
+    col[0].download_button(
+            label='選択した都道府県の人口データをダウンロード',
+            data=csv_select,
+            file_name='select_data.csv',
+            mime='text/csv'
+            )
+    col[1].download_button(
+            label='全都道府県の人口データをダウンロード',
+            data=csv_all,
+            file_name='all_data.csv',
+            mime='text/csv'
+            )
+    
 elif option == 'グラフ':
     st.title(f'{population_type}の推移と比較')
 
@@ -87,26 +111,3 @@ elif option == 'グラフ':
         st.write('都道府県を複数選択することで、各都道府県の人口を比較することができる。')
         st.write('棒グラフが高いほど、その地域の人口が多いことが分かる。')
 
-    # 選択したデータ一覧を表示
-elif option == '表':
-    st.title('データ一覧')
-    st.write(f'{selected_pre}のデータです')
-
-    csv_select = df[['都道府県名', '西暦（年）', population_type]].to_csv(index=False).encode('utf-8-sig')
-    csv_all = df_all.to_csv(index=False).encode('utf-8-sig')
-
-    st.dataframe(df[['都道府県名', '西暦（年）', population_type]])
-
-    col = st.columns(2)
-    col[0].download_button(
-            label='選択した都道府県の人口データをダウンロード',
-            data=csv_select,
-            file_name='select_data.csv',
-            mime='text/csv'
-            )
-    col[1].download_button(
-            label='全都道府県の人口データをダウンロード',
-            data=csv_all,
-            file_name='all_data.csv',
-            mime='text/csv'
-            )
