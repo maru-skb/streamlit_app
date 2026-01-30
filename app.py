@@ -39,6 +39,7 @@ if option == 'アプリの概要':
 
     with st.expander('データの詳細と注意点'):
         st.write('・データ元：e-stat 男女別人口-全国, 都道府県（大正9年～平成27年）「国勢調査」')
+        st.write('URL：https://www.e-stat.go.jp/stat-search/files?page=1&query=csv&layout=dataset&stat_infid=000031524010')
         st.write('・期間：大正9年から平成27年までの人口推移')
         st.write('・単位：人')
         st.write('・注意点：本来データにあった、全国および人口集中地区・人口集中地区以外、というデータは除外している')                
