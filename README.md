@@ -37,7 +37,7 @@
 　部品名：download_button（ダウンロードボタン）
 　目的　：アプリの使用者が、自身でデータを活用したいときに、使用できるようにするため。
 　場所　：表（データ一覧）の下部にst.columnsを使用し、2つを並べて配置した。
-参照URL：https://docs.streamlit.io/develop/api-reference/widgets/st.download_button
+　参照URL：https://docs.streamlit.io/develop/api-reference/widgets/st.download_button
 
 ・参考にしたアプリ
 　アプリ：Seattle Weather
